@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:state_managment_sample/app/ui/home.dart';
+import 'package:state_managment_sample/app/my_view_model/ui/home.dart';
 
 class App extends StatelessWidget {
 

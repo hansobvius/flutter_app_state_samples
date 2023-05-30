@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_managment_sample/app/my_view_model/view_model/base_view_model.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -10,12 +11,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final BaseViewModel _viewModel = BaseViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel.setContext = context;
+  }
+
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    // setState(() {
+    //   _counter++;
+    // });
+    _viewModel.incrementCount();
   }
 
   @override
@@ -32,7 +43,7 @@ class _HomeState extends State<Home> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '${_viewModel.count}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
