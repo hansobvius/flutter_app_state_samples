@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 abstract class IViewModelInterface {
 
-  late BuildContext elementContext;
+  late final BuildContext elementContext;
 
   void notifyUpdate();
 

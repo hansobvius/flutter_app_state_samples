@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:state_managment_sample/app/my_view_model/view_model/base_view_model.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key, required this.title});
+class MyHome extends StatefulWidget {
+  const MyHome({super.key, required this.title});
 
   final String title;
 
   @override
-  State<Home> createState() => _HomeState();
+  State<MyHome> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<MyHome> {
 
-  final BaseViewModel _viewModel = BaseViewModel();
+  late final BaseViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel.setContext = context;
+    _viewModel = BaseViewModel(
+        stateMutation: setState)
+      ..setContext = context;
   }
 
   int _counter = 0;

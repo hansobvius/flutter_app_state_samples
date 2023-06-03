@@ -4,6 +4,12 @@ import 'package:state_managment_sample/app/my_view_model/view_model/i_view_model
 
 class BaseViewModel implements IViewModelInterface{
 
+  BaseViewModel({required this.stateMutation}) {
+    setStateMutation = stateMutation;
+  }
+  
+  Function stateMutation;
+
   int? previouslyCount = 0;
   int count = 0;
 
@@ -12,8 +18,12 @@ class BaseViewModel implements IViewModelInterface{
     notifyUpdate();
   }
 
+  set setStateMutation(Function state) {
+    stateMutation = state;
+  }
+
   @override
-  late BuildContext elementContext;
+  late final BuildContext elementContext;
 
   @override
   set setContext(BuildContext context) {
@@ -23,11 +33,9 @@ class BaseViewModel implements IViewModelInterface{
   @override
   void notifyUpdate() {
     if (count != previouslyCount) {
-      elementContext.getElementForInheritedWidgetOfExactType();
-      (elementContext)
-          .getElementForInheritedWidgetOfExactType()!
-          .markNeedsBuild();
-      previouslyCount = count;
+      stateMutation.call(() {
+        previouslyCount = count;
+      });
     }
   }
 
@@ -49,7 +57,5 @@ class BaseViewModel implements IViewModelInterface{
       return false;
     }
     return false;
-    // BaseViewModel otherModel = other;
-    // return otherModel.count == count;
   }
 }
