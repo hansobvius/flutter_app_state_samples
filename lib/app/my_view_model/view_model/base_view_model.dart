@@ -1,39 +1,33 @@
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:provider/provider.dart';
 import 'package:state_managment_sample/app/my_view_model/view_model/i_view_model_interface.dart';
 
 class BaseViewModel implements IViewModelInterface{
 
-  BaseViewModel({required this.stateMutation}) {
-    setStateMutation = stateMutation;
+  BaseViewModel({required this.stateParent}) {
+    setStateParent = stateParent!;
   }
-  
-  Function stateMutation;
 
   int? previouslyCount = 0;
+
   int count = 0;
 
-  void incrementCount() {
-    count++;
-    notifyUpdate();
-  }
-
-  set setStateMutation(Function state) {
-    stateMutation = state;
-  }
+  @override
+  late final State? stateParent;
 
   @override
-  late final BuildContext elementContext;
+  late final BuildContext? elementContext;
 
   @override
-  set setContext(BuildContext context) {
-    elementContext = context;
+  set setStateParent(State state) {
+    stateParent ??= state;
+    elementContext ??= state.context;
   }
 
   @override
   void notifyUpdate() {
     if (count != previouslyCount) {
-      stateMutation.call(() {
+      // ignore: invalid_use_of_protected_member
+      stateParent!.setState(() {
         previouslyCount = count;
       });
     }
@@ -57,5 +51,10 @@ class BaseViewModel implements IViewModelInterface{
       return false;
     }
     return false;
+  }
+
+  void incrementCount() {
+    count++;
+    notifyUpdate();
   }
 }

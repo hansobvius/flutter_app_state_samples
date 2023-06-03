@@ -18,16 +18,10 @@ class _HomeState extends State<MyHome> {
   void initState() {
     super.initState();
     _viewModel = BaseViewModel(
-        stateMutation: setState)
-      ..setContext = context;
+        stateParent: this);
   }
 
-  int _counter = 0;
-
   void _incrementCounter() {
-    // setState(() {
-    //   _counter++;
-    // });
     _viewModel.incrementCount();
   }
 
