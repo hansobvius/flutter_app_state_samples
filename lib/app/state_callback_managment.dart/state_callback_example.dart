@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Follow example was extracted from google IO 2021.
+/// Follow example was extracted from google IO 2021 (https://www.youtube.com/watch?v=LFcGPS6cGrY)
+/// The sample do not express the rest of example found in this sample
 
 final GlobalKey<ShoppingCartIconState> shoppingCart = GlobalKey<ShoppingCartIconState>();
 final GlobalKey<ProductListWidgetState> productList = GlobalKey<ProductListWidgetState>();

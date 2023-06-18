@@ -5,13 +5,15 @@ import 'package:state_managment_sample/app/inherited_model_widget/ui/components/
 import 'package:state_managment_sample/app/inherited_model_widget/ui/components/widget_c.dart';
 
 class Home extends StatefulWidget {
+
   const Home({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     return Observable(
@@ -19,11 +21,11 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: const Text('Title'),
         ),
-        body: Column(
+        body: const Column(
           children: <Widget>[
-            const WidgetA(),
+            WidgetA(),
             Row(
-              children: const <Widget>[
+              children: <Widget>[
                 Icon(Icons.shopping_cart),
                 WidgetB(),
                 WidgetC(),

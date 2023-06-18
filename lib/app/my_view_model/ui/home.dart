@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:state_managment_sample/app/my_view_model/view_model/base_view_model.dart';
+import 'package:state_managment_sample/app/my_view_model/view_model/home_view_model.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key, required this.title});
@@ -12,13 +12,12 @@ class MyHome extends StatefulWidget {
 
 class _HomeState extends State<MyHome> {
 
-  late final BaseViewModel _viewModel;
+  late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel = BaseViewModel(
-        stateParent: this);
+    _viewModel = HomeViewModel(this);
   }
 
   void _incrementCounter() {
