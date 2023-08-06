@@ -21,11 +21,11 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: const Text('Title'),
         ),
-        body: const Column(
+        body: Column(
           children: <Widget>[
-            WidgetA(),
+            const WidgetA(),
             Row(
-              children: <Widget>[
+              children: const <Widget>[
                 Icon(Icons.shopping_cart),
                 WidgetB(),
                 WidgetC(),
